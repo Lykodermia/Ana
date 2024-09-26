@@ -45,13 +45,19 @@ body {
   /* Añadiendo un efecto de transición suave al cambiar el color al pasar el ratón */
   transition: color 0.3s ease;
 }
+.title-container {
+  display: flex;
+  flex-direction: column; /* Coloca los títulos en una columna */
+  align-items: center; /* Alinea los títulos al centro */
+  gap: -20px; /* Ajusta el espacio entre los elementos (puedes usar valores negativos) */
+}
+
 .title2 {
   font-family: "Dancing Script", cursive;
   font-size: 3rem;
   color: rgba(255, 100, 100, 1);
   text-align: center;
-  margin-top: 30px; /* Sin margen superior */
-  margin-bottom: 0; /* Sin margen inferior */
+  margin: 0; /* Elimina los márgenes predeterminados */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   transition: color 0.3s ease;
 }
