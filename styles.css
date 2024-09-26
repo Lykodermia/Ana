@@ -9,6 +9,7 @@
   --heart-color: red;
 }
 body {
+  width: 100%;
   margin: 0; /* Corregimos el margin del body */
   padding: 0;
   box-sizing: border-box;
