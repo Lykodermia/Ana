@@ -1,0 +1,671 @@
+:root {
+  --primary: #fff;
+  --bg-color: rgb(235, 206, 230);
+  --bg-envelope-color: #f5edd1;
+  --envelope-tab: #ecdeb8;
+  --envelope-cover: #e6cfa7;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --txt-color: #444;
+  --heart-color: red;
+}
+body {
+  margin: 0; /* Corregimos el margin del body */
+  padding: 0;
+  box-sizing: border-box;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 40%,
+    rgba(250, 219, 230, 1) 60%,
+    rgba(255, 160, 172, 1) 80%
+  );
+  min-height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+
+.kitty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 100vw;
+  margin-bottom: 20px; /* Añadimos margen entre Hello Kitty y el título */
+}
+
+.title {
+  font-family: "Dancing Script", cursive; /* Tipografía cursiva */
+  font-size: 3rem; /* Tamaño de la fuente */
+  color: rgba(255, 160, 172, 1); /* Color rosa */
+  text-align: center; /* Alineación centrada */
+  margin-top: -200px; /* Sin margen superior */
+  margin-bottom: 200px; /* Margen inferior */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+  /* Añadiendo un efecto de transición suave al cambiar el color al pasar el ratón */
+  transition: color 0.3s ease;
+}
+.title2 {
+  font-family: "Dancing Script", cursive; /* Tipografía cursiva */
+  font-size: 3rem; /* Tamaño de la fuente */
+  color: rgba(255, 100, 100, 1); /* Color rosa */
+  text-align: center; /* Alineación centrada */
+  margin-top: -auto; /* Sin margen superior */
+  margin-bottom: 200px; /* Margen inferior */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+  /* Añadiendo un efecto de transición suave al cambiar el color al pasar el ratón */
+  transition: color 0.3s ease;
+}
+.title:hover {
+  color: rgba(255, 100, 100, 1); /* Cambiar el color al pasar el ratón */
+}
+
+.title2:hover {
+  color: rgba(255, 160, 172, 1); /* Cambiar el color al pasar el ratón */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container > .envelope-wrapper {
+  margin-top: -0px;
+  background: var(--bg-envelope-color);
+  box-shadow: 0 0 40px var(--shadow-color);
+  margin-bottom: 20px; /* Reducimos el espacio debajo de la carta para ajustar mejor con el libro */
+}
+
+.envelope-wrapper > .envelope {
+  position: relative;
+  width: 300px;
+  height: 230px;
+}
+
+.envelope-wrapper > .envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  border-top: 130px solid var(--envelope-tab);
+  border-right: 150px solid transparent;
+  border-left: 150px solid transparent;
+  transform-origin: top;
+  transition: all 0.5s ease-in-out 0.7s;
+}
+
+.envelope-wrapper > .envelope::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 0px;
+  height: 0px;
+  border-top: 130px solid transparent;
+  border-right: 150px solid var(--envelope-cover);
+  border-bottom: 100px solid var(--envelope-cover);
+  border-left: 150px solid var(--envelope-cover);
+}
+
+.envelope > .letter {
+  position: absolute;
+  right: 20%;
+  bottom: 0;
+  width: 54%;
+  height: 80%;
+  background: var(--primary);
+  text-align: center;
+  transition: all 1s ease-in-out;
+  box-shadow: 0 0 5px var(--shadow-color);
+  padding: 20px 10px;
+}
+.imagencarta {
+  width: 80%;
+  height: 80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto; /* Asegura que esté centrada en el contenedor */
+}
+img {
+  width: 100%; /* Ajusta la imagen al ancho del contenedor */
+  height: 100%; /* Ajusta la imagen al alto del contenedor */
+  object-fit: contain; /* Mantiene la proporción de la imagen */
+}
+
+.envelope > .letter > .text,
+.imagencarta {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: var(--txt-color);
+  text-align: left;
+  font-size: 10px;
+}
+
+.heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  background: var(--heart-color);
+  z-index: 4;
+  transform: translate(-50%, -20%) rotate(45deg);
+  transition: transform 0.5s ease-in-out 1s;
+  box-shadow: 0 1px 6px var(--shadow-color);
+  cursor: pointer;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: var(--heart-color);
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -7.5px;
+}
+
+.heart:after {
+  right: 7.5px;
+}
+
+.flap > .envelope:before {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.flap > .envelope > .letter {
+  bottom: 100px;
+  transform: scale(1.5);
+  transition-delay: 1s;
+}
+
+.flap > .heart {
+  transform: rotate(90deg);
+  transition-delay: 0.4s;
+}
+
+/* Estilos del cuaderno */
+.book {
+  width: 536px;
+  height: 700.24px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  perspective: 1500px;
+  transform-style: preserve-3d;
+  margin-top: 100px; /* Pequeño espacio entre la carta y el libro */
+  margin-bottom: 50px; /* Aumentamos el espacio debajo del libro para permitir más scroll */
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.page.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.page.flip {
+  animation: flip 1s forwards;
+}
+
+.cover {
+  background: #f9f9f9;
+  color: #333;
+  text-align: center;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.page-number {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+@keyframes flip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-180deg);
+  }
+}
+.flower-container {
+  margin-top: 50px;
+  position: relative;
+}
+
+.glass {
+  height: 200px;
+  width: 150px;
+  background: #cdb2df;
+  border-radius: 75px 75px 0px 0px;
+  position: relative;
+}
+
+.glass:before {
+  content: "";
+  height: 10px;
+  width: 10px;
+  transform-origin: center;
+  border: 6.25px solid #cdb2df;
+  border-radius: 100%;
+  position: absolute;
+  left: 64px;
+  top: -18px;
+}
+
+.glass:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  width: 150px;
+  background: #a52a2a;
+  top: 100%;
+  left: 0%;
+}
+
+.shine {
+  width: 7px;
+  height: 82.5px;
+  background: white;
+  opacity: 0.2;
+  position: absolute;
+  left: 85%;
+  top: 50px;
+  border-radius: 25px;
+  z-index: 10;
+}
+.shine:before {
+  content: "";
+  width: 7px;
+  height: 10px;
+  position: absolute;
+  background: white;
+  top: 91px;
+  border-radius: 25px;
+}
+
+.petals > div {
+  position: absolute;
+  background: #d52d58;
+  width: 21px; /* Reducción del tamaño de los pétalos */
+  height: 30px;
+  top: 50px;
+  transition: all 0.5s ease-out;
+}
+
+.petals > div:nth-child(1) {
+  border-radius: 3.75px;
+  box-shadow: 0px 0px 15px rgba(245, 148, 184, 1);
+  left: 67px;
+  top: 50px;
+  background: #d52d58;
+}
+
+.petals > div:nth-child(2),
+.petals > div:nth-child(4),
+.petals > div:nth-child(6) {
+  background: #b81b43;
+  left: 57px;
+  border-radius: 0px 12.5px 0px 12.5px;
+  transform-origin: bottom right;
+}
+
+.petals > div:nth-child(3),
+.petals > div:nth-child(5),
+.petals > div:nth-child(7) {
+  background: #b81b43;
+  left: 75px;
+  border-radius: 12.5px 0px 12.5px 0px;
+  transform-origin: bottom left;
+}
+
+.petals > div:nth-child(2) {
+  z-index: 5;
+  background: #ab1a3f;
+  top: 55px;
+  height: 32.5px;
+  box-shadow: 0px 0px 15px rgba(245, 148, 184, 0.5);
+  animation: bloom2 3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.petals > div:nth-child(3) {
+  z-index: 4;
+  background: #ab1a3f;
+  top: 55px;
+  height: 32.5px;
+  box-shadow: 0px 0px 15px rgba(245, 148, 184, 0.5);
+  animation: bloom3 3s ease-in-out, glowing 2.5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+
+.petals > div:nth-child(4) {
+  z-index: 3;
+  background: #b81b43;
+  top: 53px;
+  height: 33.75px;
+  box-shadow: 0px 0px 15px rgba(245, 148, 184, 0.5);
+  animation: bloom4 3s ease-in-out, glowing 2.5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+
+.petals > div:nth-child(5) {
+  z-index: 2;
+  background: #b81b43;
+  top: 53px;
+  height: 33.75px;
+  box-shadow: 0px 0px 15px rgba(245, 148, 184, 0.5);
+  animation: bloom5 3s ease-in-out, glowing 2.5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+
+.petals > div:nth-child(6) {
+  z-index: 1;
+  background: #c9204b;
+  top: 50px;
+  height: 32.5px;
+  box-shadow: 0px 0px 15px rgba(245, 148, 184, 0.3);
+  animation: bloom6 3s ease-in-out, glowing 2.5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+
+.petals > div:nth-child(7) {
+  z-index: 0;
+  background: #c9204b;
+  top: 50px;
+  height: 32.5px;
+  box-shadow: 0px 0px 15px rgba(245, 148, 184, 0.3);
+  animation: bloom7 3s ease-in-out, glowing 2.5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+
+.deadPetals > div {
+  position: absolute;
+  background: #d52d58;
+  width: 5px;
+  height: 3.75px;
+  top: 50px;
+  border-radius: 0px 7.5px 0px 7.5px;
+  box-shadow: 0px 0px 7.5px rgba(245, 148, 184, 0.5);
+  transition: all 0.5s ease-out;
+}
+
+.leaves > div:nth-last-child(1) {
+  position: absolute;
+  width: 13.75px;
+  height: 7.5px;
+  background: #338f37;
+  top: 83px;
+  left: 69.5px;
+  border-radius: 100px;
+}
+
+.leaves > div:nth-child(1) {
+  position: absolute;
+  width: 3.75px;
+  height: 97.5px;
+  background: #054c05;
+  top: 77px;
+  left: 75px;
+  border-radius: 0 0 100px 100px;
+}
+
+.leaves > div:nth-child(2) {
+  position: absolute;
+  width: 15px;
+  height: 25px;
+  top: 13.25px;
+  border-radius: 2.5px 20px 10px 20px;
+  background: #054c05;
+  transform-origin: bottom;
+  transform: rotate(-30deg);
+  top: 103px;
+  left: 63.5px;
+  box-shadow: inset 2.5px 2.5px #066406;
+}
+
+.leaves > div:nth-child(3) {
+  position: absolute;
+  width: 15px;
+  height: 25px;
+  top: 13.25px;
+  border-radius: 20px 0.25px 20px 10px;
+  background: #054c05;
+  transform-origin: bottom;
+  transform: rotate(30deg);
+  top: 90px;
+  left: 75px;
+  box-shadow: inset -2.5px 2.5px #066406;
+}
+
+.thorns > div {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50px;
+}
+
+.thorns > div:nth-child(odd) {
+  border-top: 3.75px solid transparent;
+  border-bottom: 3.75px solid transparent;
+  border-left: 3.75px solid #054c05;
+  left: 71.5px;
+}
+
+.thorns > div:nth-child(even) {
+  border-top: 3.75px solid transparent;
+  border-bottom: 3.75px solid transparent;
+  border-right: 3.75px solid #054c05;
+  left: 79px;
+}
+
+.thorns > div:nth-child(1),
+.thorns > div:nth-child(2) {
+  top: 100px;
+}
+
+.thorns > div:nth-child(3),
+.thorns > div:nth-child(4) {
+  top: 125px;
+}
+
+@keyframes bloom2 {
+  50% {
+    transform: rotate(-90deg);
+    top: 400px;
+    left: 150px;
+  }
+
+  100% {
+    transform: rotate(-60deg);
+    top: 615px;
+    left: 100px;
+    background: #71122a;
+    box-shadow: 0px 0px 0px rgba(245, 148, 184, 0);
+  }
+}
+
+@keyframes bloom3 {
+  100% {
+    transform: rotate(50deg);
+  }
+}
+
+@keyframes bloom4 {
+  100% {
+    transform: rotate(-25deg);
+  }
+}
+
+@keyframes bloom5 {
+  100% {
+    transform: rotate(25deg);
+  }
+}
+
+@keyframes bloom6 {
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes bloom7 {
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes glowing {
+  50% {
+    background: #d7365f;
+    box-shadow: 0px 0px 60px rgba(245, 148, 184, 1);
+  }
+}
+
+@keyframes falling {
+  20% {
+    top: 335px;
+    background: #9d193b;
+    box-shadow: 0px 0px 0px rgba(245, 148, 184, 0);
+  }
+
+  100% {
+    top: 335px;
+    opacity: 0;
+  }
+}
+.sanrio {
+  width: 1rem;
+  height: 1rem;
+  background-color: transparent;
+  margin-left: -4rem;
+  box-shadow: /* heart */ -14rem 0rem red, -14rem -1rem red, -14rem -2rem red,
+    -14rem -3rem red, -14rem -4rem red, -13rem 1rem red, -13rem 0rem red,
+    -13rem -1rem red, -13rem -2rem red, -13rem -3rem red, -13rem -4rem red,
+    -13rem -5rem red, -13rem -6rem red, -12rem 1rem red, -12rem 0rem red,
+    -12rem -1rem red, -12rem -2rem red, -12rem -3rem red, -12rem -4rem red,
+    -12rem -5rem red, -12rem -6rem red, -12rem -7rem red, -12rem -8rem red,
+    -11rem 4rem red, -11rem 3rem red, -11rem 1rem red, -11rem 0rem red,
+    -11rem -1rem red, -11rem -2rem red, -11rem -3rem red, -11rem -4rem red,
+    -11rem -5rem red, -11rem -6rem red, -11rem -7rem red, -11rem -8rem red,
+    -11rem -9rem red, -10rem 5rem red, -10rem 4rem red, -10rem 3rem red,
+    -10rem 1rem red, -10rem 0rem red, -10rem -1rem red, -10rem -2rem red,
+    -10rem -3rem red, -10rem -4rem red, -10rem -5rem red, -10rem -6rem red,
+    -10rem -7rem red, -10rem -8rem red, -10rem -9rem red, -10rem -10rem red,
+    -9rem 6rem red, -9rem -4rem red, -9rem -5rem red, -8rem 7rem red,
+    -7rem 8rem red, -6rem -12rem red, -5rem -12rem red, -4rem -12rem red,
+    -3rem -12rem red, -2rem -12rem red, -4rem -11rem red, -3rem -11rem red,
+    -2rem -11rem red, -1rem -11rem red, 0rem -11rem red, -2rem -10rem red,
+    14rem -11rem red, 14rem -10rem red, 14rem -9rem red, 14rem -4rem red,
+    15rem -10rem red, 15rem -9rem red, 15rem -8rem red, 15rem -7rem red,
+    15rem -6rem red, 15rem -6rem red, 15rem -5rem red, 15rem -4rem red,
+    15rem -3rem red, 15rem -2rem red, 15rem -1rem red, 15rem 0rem red,
+    15rem 2rem red, 15rem 3rem red, 15rem 5rem red, 14rem 6rem red,
+    16rem -10rem red, 16rem -9rem red, 16rem -8rem red, 16rem -7rem red,
+    16rem -6rem red, 16rem -6rem red, 16rem -5rem red, 16rem -4rem red,
+    16rem -3rem red, 16rem -2rem red, 16rem -1rem red, 16rem 0rem red,
+    16rem 2rem red, 16rem 3rem red, 16rem 4rem red, 17rem -9rem red,
+    17rem -8rem red, 17rem -7rem red, 17rem -6rem red, 17rem -5rem red,
+    17rem -4rem red, 17rem -3rem red, 17rem -2rem red, 17rem -1rem red,
+    17rem 0rem red, 17rem 1rem red, 17rem 3rem red, 18rem -8rem red,
+    18rem -7rem red, 18rem -6rem red, 18rem -5rem red, 18rem -4rem red,
+    18rem -3rem red, 18rem -2rem red, 18rem -1rem red, 18rem 0rem red,
+    18rem 1rem red, 18rem 2rem red, 19rem -5rem red, 19rem -4rem red,
+    19rem -3rem red, 19rem -2rem red, 19rem -1rem red, 19rem 0rem red,
+    19rem 1rem red, 0rem 13rem red, 1rem 13rem red, 2rem 13rem red,
+    3rem 13rem red, 4rem 13rem red, 5rem 13rem red, 2rem 14rem red,
+    3rem 14rem red, 1rem 12rem red, 2rem 12rem red, 3rem 12rem red,
+    4rem 12rem red, 5rem 12rem red, 1rem 11rem red, 2rem 11rem red,
+    3rem 11rem red, 4rem 11rem red, /* black outline */ -12rem 2rem black,
+    -11rem 2rem black, -10rem 2rem black, -9rem 2rem black, -9rem 1rem black,
+    -9rem 0rem black, -9rem -1rem black, -9rem -2rem black, -9rem -3rem black,
+    -8rem -4rem black, -8rem -5rem black, -7rem -5rem black, -9rem -6rem black,
+    -9rem -7rem black, -9rem -8rem black, -9rem -9rem black, -9rem -10rem black,
+    -8rem -11rem black, -7rem -11rem black, -6rem -11rem black,
+    -5rem -11rem black, -4rem -10rem black, -3rem -10rem black,
+    -2rem -9rem black, -1rem -10rem black, 0rem -10rem black, 1rem -10rem black,
+    3rem -11rem black, 3rem -12rem black, 4rem -13rem black, 5rem -13rem black,
+    6rem -12rem black, 7rem -11rem black, 8rem -11rem black, 9rem -11rem black,
+    8rem -10rem black, 9rem -9rem black, 8rem -9rem black, 7rem -9rem black,
+    6rem -9rem black, 6rem -8rem black, 6rem -7rem black, 6rem -6rem black,
+    7rem -5rem black, 8rem -4rem black, 9rem -5rem black, 10rem -5rem black,
+    10rem -6rem black, 10rem -7rem black, 10rem -8rem black, 11rem -9rem black,
+    12rem -9rem black, 13rem -9rem black, 13rem -10rem black, 13rem -11rem black,
+    12rem -12rem black, 11rem -12rem black, 10rem -12rem black, 9rem -4rem black,
+    9rem -3rem black, 10rem -2rem black, 11rem -2rem black, 12rem -2rem black,
+    5rem -9rem black, 4rem -8rem black, 5rem -7rem black, 2rem -10rem black,
+    2rem -9rem black, 2rem -8rem black, 2rem -7rem black, 2rem -6rem black,
+    3rem -5rem black, 4rem -5rem black, 5rem -5rem black, 11rem -7rem black,
+    12rem -6rem black, 12rem -5rem black, 11rem -4rem black, 13rem -4rem black,
+    13rem -3rem black, 14rem -5rem black, 14rem -6rem black, 14rem -7rem black,
+    14rem -8rem black, 14rem -3rem black, 14rem -2rem black, 14rem -1rem black,
+    14rem 0rem black, 13rem 1rem black, 14rem 1rem black, 15rem 1rem black,
+    16rem 1rem black, 17rem 2rem black, 14rem 2rem black, 14rem 3rem black,
+    13rem 4rem black, 14rem 4rem black, 15rem 4rem black, 16rem 5rem black,
+    14rem 5rem black, 13rem 6rem black, 12rem 6rem black, 13rem 7rem black,
+    14rem 7rem black, 15rem 7rem black, 16rem 8rem black, 12rem 8rem black,
+    11rem 8rem black, 11rem 9rem black, 12rem 10rem black, 11rem 11rem black,
+    10rem 12rem black, 9rem 12rem black, 8rem 13rem black, 7rem 13rem black,
+    6rem 12rem black, 5rem 11rem black, 5rem 10rem black, 5rem 9rem black,
+    6rem 8rem black, 7rem 8rem black, 8rem 7rem black, 9rem 7rem black,
+    10rem 7rem black, -9rem 3rem black, -9rem 4rem black, -9rem 5rem black,
+    -10rem 6rem black, -8rem 5rem black, -8rem 6rem black, -7rem 4rem black,
+    -8rem 3rem black, -6rem 6rem black, -7rem 7rem black, -8rem 8rem black,
+    -9rem 8rem black, -10rem 9rem black, -5rem 7rem black, -4rem 7rem black,
+    -3rem 7rem black, -2rem 7rem black, -1rem 8rem black, 0rem 9rem black,
+    0rem 10rem black, 0rem 11rem black, 0rem 12rem black, -1rem 13rem black,
+    -2rem 13rem black, -3rem 13rem black, -4rem 12rem black, -5rem 11rem black,
+    -6rem 10rem black, -6rem 9rem black, -6rem 8rem black,
+    /* right eye */ 8rem 2rem black, 9rem 2rem black, 8rem 3rem black,
+    9rem 3rem black, 8rem 4rem black, 9rem 4rem black,
+    /* left eye */ -3rem 2rem black, -4rem 2rem black, -3rem 3rem black,
+    -4rem 3rem black, -3rem 4rem black, -4rem 4rem black,
+    /* nose */ 2rem 5rem yellow, 3rem 5rem yellow,
+    /* pink bow */ 3rem -10rem pink, 3rem -9rem pink, 3rem -8rem pink,
+    3rem -7rem pink, 3rem -6rem pink, 4rem -12rem pink, 4rem -11rem pink,
+    4rem -10rem pink, 4rem -9rem pink, 4rem -7rem pink, 4rem -6rem pink,
+    5rem -12rem pink, 5rem -11rem pink, 5rem -10rem pink, 5rem -8rem pink,
+    5rem -6rem pink, 6rem -11rem pink, 6rem -10rem pink, 7rem -10rem pink,
+    7rem -8rem pink, 7rem -7rem pink, 7rem -6rem pink, 8rem -8rem pink,
+    8rem -7rem pink, 8rem -6rem pink, 8rem -5rem pink, 9rem -8rem pink,
+    9rem -7rem pink, 9rem -6rem pink, 10rem -4rem pink, 10rem -3rem pink,
+    11rem -8rem pink, 11rem -6rem pink, 11rem -5rem pink, 11rem -4rem pink,
+    11rem -3rem pink, 12rem -8rem pink, 12rem -7rem pink, 12rem -4rem pink,
+    12rem -3rem pink, 13rem -8rem pink, 13rem -7rem pink, 13rem -6rem pink,
+    13rem -5rem pink;
+}
+.kitty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}

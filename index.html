@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz Cumpleaños Ana</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="kitty">
+        <div class="sanrio"></div>
+      </div>
+      <h1 class="title">Feliz Cumpleaños Ana</h1>
+
+      <div class="envelope-wrapper">
+        <div class="envelope">
+          <div class="letter">
+            <div class="text">
+              <p>
+                Te quiero mucho, espero que la pases muy bien hoy. Estoy muy
+                orgulloso de ti, espero que en el futuro pueda ver como te
+                conviertes en una gran doctora
+              </p>
+              <img
+                class="imagencarta"
+                src="https://i.pinimg.com/736x/27/cd/8e/27cd8ea18ac5fb3a748873208a9b667c.jpg"
+                alt="imagencarta"
+              />
+            </div>
+          </div>
+          <div class="heart"></div>
+        </div>
+      </div>
+
+      <div class="book" id="book">
+        <div class="page cover active" id="cover">
+          <div class="page-content">
+            <img src="fotos/portada.jpg" alt="imagen portada" />
+          </div>
+        </div>
+        <div class="page" id="chapter1">
+          <div class="page-content">
+            <img src="fotos/contraportada.jpg" alt="página 1" />
+          </div>
+          <div class="page-number">1</div>
+        </div>
+        <div class="page" id="chapter2">
+          <div class="page-content">
+            <img src="fotos/pagina1.jpg" alt="página 2" />
+          </div>
+          <div class="page-number">2</div>
+        </div>
+        <div class="page" id="chapter3">
+          <div class="page-content">
+            <img src="fotos/pagina2.jpg" alt="página 3" />
+          </div>
+          <div class="page-number">3</div>
+        </div>
+        <div class="page" id="chapter4">
+          <div class="page-content">
+            <img src="fotos/pagina3.jpg" alt="página 4" />
+          </div>
+          <div class="page-number">4</div>
+        </div>
+        <div class="page" id="chapter5">
+          <div class="page-content">
+            <img src="fotos/pagina4.jpg" alt="página 5" />
+          </div>
+          <div class="page-number">5</div>
+        </div>
+      </div>
+      <div class="flower-container">
+        <div class="glass">
+          <div class="shine"></div>
+        </div>
+        <div class="thorns">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="leaves">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="petals">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="deadPetals">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <h2 class="title2">
+        Mi amor por ti durará hasta que se caiga el último pétalo
+      </h2>
+    </div>
+
+    <script>
+      // Script para el sobre
+      const envelope = document.querySelector(".envelope-wrapper");
+      envelope.addEventListener("click", () => {
+        envelope.classList.toggle("flap");
+      });
+    </script>
+
+    <script>
+      // Script para el cuaderno
+      const book = document.getElementById("book");
+      const pages = [
+        "cover",
+        "chapter1",
+        "chapter2",
+        "chapter3",
+        "chapter4",
+        "chapter5",
+      ];
+      let currentPage = 0;
+
+      book.addEventListener("click", () => {
+        const currentPageElement = document.getElementById(pages[currentPage]);
+        currentPageElement.classList.remove("active");
+        currentPageElement.classList.add("flip");
+
+        setTimeout(() => {
+          currentPageElement.classList.remove("flip");
+          currentPage = (currentPage + 1) % pages.length;
+          const nextPageElement = document.getElementById(pages[currentPage]);
+          nextPageElement.classList.add("active");
+        }, 1000); // Tiempo de animación
+      });
+    </script>
+  </body>
+</html>
