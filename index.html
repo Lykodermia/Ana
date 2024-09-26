@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.1, user-scalable=yes"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
     <title>Feliz Cumpleaños Ana</title>
     <link rel="stylesheet" href="./styles.css" />
@@ -110,9 +110,8 @@
           <div></div>
         </div>
       </div>
-      <h2 class="title2">
-        Mi amor por ti durará hasta que se caiga el último pétalo
-      </h2>
+      <h2 class="title2">Mi amor por ti durará hasta</h2>
+      <h2 class="title2">que se caiga el último pétalo</h2>
     </div>
 
     <script>
@@ -146,11 +145,8 @@
           currentPage = (currentPage + 1) % pages.length;
           const nextPageElement = document.getElementById(pages[currentPage]);
           nextPageElement.classList.add("active");
-        }, 1000); // Tiempo de animación
+        }, 550); // Tiempo de animación
       });
-      if (window.innerWidth < 768) {
-        window.location.href = "https://tu-sitio-web.com/desktop-version"; // Cambia esto a la URL de tu versión de escritorio
-      }
     </script>
   </body>
 </html>

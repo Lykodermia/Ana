@@ -46,22 +46,26 @@ body {
   transition: color 0.3s ease;
 }
 .title2 {
-  font-family: "Dancing Script", cursive; /* Tipografía cursiva */
-  font-size: 3rem; /* Tamaño de la fuente */
-  color: rgba(255, 100, 100, 1); /* Color rosa */
-  text-align: center; /* Alineación centrada */
-  margin-top: -auto; /* Sin margen superior */
-  margin-bottom: 200px; /* Margen inferior */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
-  /* Añadiendo un efecto de transición suave al cambiar el color al pasar el ratón */
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+  color: rgba(255, 100, 100, 1);
+  text-align: center;
+  margin-top: 30px; /* Sin margen superior */
+  margin-bottom: 0; /* Sin margen inferior */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   transition: color 0.3s ease;
 }
+
+.title2:nth-of-type(2) {
+  margin-top: -10px; /* Ajusta este valor según tus necesidades */
+}
+
 .title:hover {
   color: rgba(255, 100, 100, 1); /* Cambiar el color al pasar el ratón */
 }
 
 .title2:hover {
-  color: rgba(255, 160, 172, 1); /* Cambiar el color al pasar el ratón */
+  color: rgb(59, 31, 35); /* Cambiar el color al pasar el ratón */
 }
 
 .container {
